@@ -1,0 +1,19 @@
+.sbb {
+  width: 5vh;
+  height: 5vh;
+
+  border-radius: 2.5vh;
+  transform: rotate(30deg);
+}
+
+#bbox {
+  width: 15vh;
+  height: 15vh;
+  transform: rotate(-30deg);
+}
+.brow:first-child { transform: translateY(0.6vh); }
+.brow {
+  display: flex;
+  justify-content: center;
+}
+.brow:last-child { transform: translateY(-0.6vh); }
