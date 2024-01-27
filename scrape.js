@@ -28,18 +28,17 @@ export async function getSpellingBee() {
 
   // cutoff is after 3pm est
   let cutoff = new Date(Date.parse(spellingbee.printDate))
-  cutoff.setHours(cutoff.getHours() - 5) //into EST
+  cutoff.setHours(cutoff.getHours() + 5) //into EST
   cutoff.setHours(cutoff.getHours() - 9) // into cutoff
 
-  if (new Date() > cutoff) return writeSpellingBee()
+  if (cutoff < new Date()) return writeSpellingBee()
   return spellingbee
 }
 
 export async function getCrossword() {
 
   //load up current current crossword, if doesn't exist just get, write and return
-  if (await access(files.CROSSWORD).then(()=>false,()=>true))
-    return writeCrossword()
+  if (await access(files.CROSSWORD).then(()=>false,()=>true)) return writeCrossword()
   const crossword = await readFile(files.CROSSWORD).then(a => JSON.parse(a))
 
   /* check whether crossword date matches, heuristic:
@@ -48,12 +47,16 @@ export async function getCrossword() {
   EST the previous day. Sunday puzzles are available at
   6 p.m. EST on Saturday */
 
-  let cutoff = new Date(Date.parse(crossword.publicationDate))
-  cutoff.setHours(cutoff.getUTCHours() - 5) //into EST
-  cutoff.setHours(cutoff.getUTCHours() - (cutoff.getUTCDay() == 6 ? 6 : 2)) // into cutoff
+  const date = new Date(Date.parse(crossword.publicationDate))
+  date.setDate(date.getDate() + 1)
+  date.setHours(date.getHours() + 5)
+  date.setHours(date.getHours() - 2)
+  if (date.getUTCDay() == 0)
+    date.setHours(date.getHours() - 4)
+
   
   // if there is a new cutoff, just write the crossword
-  if (new Date() > cutoff) return writeCrossword(true)
+  if (date < new Date()) return writeCrossword()
 
   // otherwise we're good
   return crossword
@@ -66,14 +69,16 @@ async function writeCrossword() {
 
   // if we no longer have auth, get it again (thanks mom lol)
   if (SIDNY_cookie == null) getAuthCookies()
-  console.log(`getting auth with cookie that expires in ${SIDNY_cookie.expiration_date - Date.now()}`)
+  console.log("getting auth with cookie " + SIDNY_cookie)
 
   const date = new Date()
-  date.setHours(date.getUTCHours() - 5)
-  date.setHours(date.getUTCHours() + (date.getUTCDay() == 6 ? 6 : 8))
-  const ds = `${date.getUTCFullYear()}-${date.getUTCMonth()}-${date.getUTCDate()}`
-  
-  const crossword = await fetchCookie(urls.CROSSWORD_URL(ds), { "User-Agent": USER_AGENT, })
+  date.setHours(date.getHours() - 5)
+  date.setHours(date.getHours() + 2)
+  const ds = date.getFullYear() + "-"
+    + (date.getUTCMonth() + 1).toString().padStart(2, "0") + "-" 
+    + (date.getUTCDate()).toString().padStart(2, "0")
+
+  const crossword = await fetchCookie(urls.CROSSWORD_URL(ds), { "User-Agent": USER_AGENT })
     .then(a => a.text())
 
   await writeFile(files.CROSSWORD, crossword)
