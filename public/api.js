@@ -1,9 +1,8 @@
-const BASE_URL = "http://localhost:5000"
 export async function getCrossword() {
-  return await fetch(BASE_URL+"/api/crossword")
+  return await fetch("/api/crossword")
 }
 export async function getSpellingBee() {
-  return await fetch(BASE_URL+"/api/spellingbee")
+  return await fetch("/api/spellingbee")
 }
 
 

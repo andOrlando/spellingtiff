@@ -3,15 +3,71 @@
 <head>
   <title>title :)</title>
   <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width">
 </head>
 <body>
 
 <div id="countdown">0:00</div>
 
-<div id="board"></div>
-<ul id="across"></ul>
-<ul id="down"></ul>
+<div id="game">
+  <div style="position: relative">
+    <input id="rebus" class="hide" autocomplete="off" autocorrect="off"></input>
+    <div id="board"></div>
+  </div>
+  <div id="across" class="clues"></div>
+  <div id="down" class="clues"></div>
+</div>
 
+<div id="keyboard" class="hide">
+  <div id="cluebar">
+    <button id="prevclue"><=</button>
+    <div id="clue">clue</div>
+    <button id="nextclue">=></button>
+  </div>
+
+  <div id="row1">
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+  </div>
+
+  <div id="row2">
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+  </div>
+
+  <div id="row3">
+    <div><button id="switch"></button></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button></button><div></div></div>
+    <div><button id="backspace"><=</button><div><=</div></div>
+  </div>
+</div>
+
+<button id="checkpuzzle">check puzzle</button>
+<button id="checkword">check word</button>
+<button id="revealpuzzle">reveal puzzle</button>
+<button id="revealword">reveal word</button>
+<button id="rebusbtn">rebus</button>
 
 </body>
 <script src="index.js" type="module"></script>

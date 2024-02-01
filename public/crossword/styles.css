@@ -1,7 +1,16 @@
-g.cells > g {
-  pointer-events: bounding-box;
+:root {
+  --accent: #50a165;
+  --accent-mid: #bbb;
+  --accent-light: #c5edcf;
+  --light-gray: #f0f4f5;
+  --red:  #db2c52;
 }
-g.cells > g > text.label {
+body { margin: 0 }
+.hide { display: none }
+
+g.cells g text,
+.clues div,
+#countdown {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -10,3 +19,114 @@ g.cells > g > text.label {
   -o-user-select: none;
   user-select: none;
 }
+
+g.cells g path[fill="none"] { fill: #fff; }
+g.cells g.selected path { fill: var(--accent-light); }
+g.cells g.word path { fill: var(--light-gray); }
+g.cells g.referenced path { fill: var(--accent-mid); }
+
+g.cells g.incorrect text.guess { fill: var(--red) }
+g.cells g.correct text.guess { fill: var(--accent) }
+
+
+
+#game {
+  display: grid;
+  grid-template-columns: min(max(500px, 50vw), 100vw) 1fr 1fr;
+  grid-template-rows: fit-content(0);
+  grid-gap: 10px;
+}
+
+.clues {
+  overflow-y: scroll;
+  margin: 0;
+}
+
+.clues div {
+  border-left: #fff 8px solid;
+  margin: 4px 0;
+  padding: 4px 6px;
+}
+.clues div.selected {
+  border-left-color: var(--accent);
+}
+
+#rebus {
+  position: absolute;
+}
+
+#row1,
+#row2,
+#row3 {
+  display: flex;
+}
+
+#row1 > div,
+#row2 > div,
+#row3 > div {
+  flex: auto;
+  flex-basis: 100%;
+  box-sizing: border-box;
+  padding: 4px;
+  position: relative;
+}
+
+#row1 > div button,
+#row2 > div button,
+#row3 > div button {
+  margin: auto;
+  width: 100%;
+  height: 60px;
+}
+
+#row1 > div > div,
+#row2 > div > div,
+#row3 > div > div {
+  position: absolute;
+  width: calc(100% - 8px);
+  height: 40px;
+  line-height: 40px;
+  top: -40px;
+  background: #ccc;
+  opacity: 0;
+  /* z-index: -1;*/
+  text-align: center;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+#row1 > div > div.popup,
+#row2 > div > div.popup,
+#row3 > div > div.popup {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#cluebar {
+  display: flex;
+  margin: 4px;
+  align-items: flex-end;
+}
+
+#clue {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto 8px;
+}
+
+#prevclue,
+#nextclue {
+  width: 60px;
+  height: 40px;
+}
+
+#keyboard {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+
+

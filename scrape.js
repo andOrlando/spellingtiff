@@ -74,6 +74,8 @@ async function writeCrossword() {
   const date = new Date()
   date.setHours(date.getHours() - 5)
   date.setHours(date.getHours() + 2)
+  if (date.getUTCDay() == 0)
+    date.setHours(date.getHours() + 4)
   const ds = date.getFullYear() + "-"
     + (date.getUTCMonth() + 1).toString().padStart(2, "0") + "-" 
     + (date.getUTCDate()).toString().padStart(2, "0")
