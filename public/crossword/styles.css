@@ -76,7 +76,7 @@ g.cells g.correct text.guess { fill: var(--accent) }
 #row3 > div button {
   margin: auto;
   width: 100%;
-  height: 60px;
+  height: 13vw;
 }
 
 #row1 > div > div,

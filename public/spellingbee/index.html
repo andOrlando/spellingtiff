@@ -3,37 +3,57 @@
 <head>
   <title>title :)</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../common.css">
   <meta name="viewport" content="width=device-width">
 </head>
 <body>
-<span id="countdown">0:00</span>
-<span id="score"></span>
-<span id="word"></span>
 
-<div style="display: flex; justify-content: center">
-  <div id="bbox">
-    <div class="brow">
-      <button class="sbb"></button>
-      <button class="sbb"></button>
+<div id="game">
+  <div id="bars">
+    <div id="totalprogress"></div>
+    <div id="rank"></div>
+    <div id="stageprogress"></div>
+  </div>
+  <div id="scorebox">
+    <span id="score"></span>
+    <div id="dropdown">
+      <span id="mostrecent">heyo</span>
+      <svg id="arrow" xmlns="http://www.w3.org/2000/svg" width="36px" height="21px" viewBox="0 0 960 560"><g id="Rounded_Rectangle_33_copy_4_1_"><path d="M480,344.181L268.869,131.889c-15.756-15.859-41.3-15.859-57.054,0c-15.754,15.857-15.754,41.57,0,57.431l237.632,238.937   c8.395,8.451,19.562,12.254,30.553,11.698c10.993,0.556,22.159-3.247,30.555-11.698l237.631-238.937   c15.756-15.86,15.756-41.571,0-57.431s-41.299-15.859-57.051,0L480,344.181z"></path></g></svg>
+      <div id="found"></div>
     </div>
-    <div class="brow">
-      <button class="sbb"></button>
-      <button class="sbb" id="center"></button>
-      <button class="sbb"></button>
-    </div>
-    <div class="brow">
-      <button class="sbb"></button>
-      <button class="sbb"></button>
+    <!-- score popups go here -->
+  </div>
+
+  <div id="word"></div>
+
+  <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+    <div id="bbox">
+      <div class="brow">
+        <button class="sbb"></button>
+        <button class="sbb"></button>
+      </div>
+      <div class="brow">
+        <button class="sbb"></button>
+        <button class="sbb" id="center"></button>
+        <button class="sbb"></button>
+      </div>
+      <div class="brow">
+        <button class="sbb"></button>
+        <button class="sbb"></button>
+      </div>
     </div>
   </div>
-</div>
-<button id="shuffle">shuffle</button>
-<button id="backspace">backspace</button>
-<button id="clear">clear</button>
-<button id="submit">submit</button>
+  <div style="display:flex;justify-content:center">
+    <button id="delete">DELETE</button>
+    <button id="shuffle">
+      <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 118.04 122.88"><path d="M16.08,59.26A8,8,0,0,1,0,59.26a59,59,0,0,1,97.13-45V8a8,8,0,1,1,16.08,0V33.35a8,8,0,0,1-8,8L80.82,43.62a8,8,0,1,1-1.44-15.95l8-.73A43,43,0,0,0,16.08,59.26Zm22.77,19.6a8,8,0,0,1,1.44,16l-10.08.91A42.95,42.95,0,0,0,102,63.86a8,8,0,0,1,16.08,0A59,59,0,0,1,22.3,110v4.18a8,8,0,0,1-16.08,0V89.14h0a8,8,0,0,1,7.29-8l25.31-2.3Z"/></svg>
+    </button>
+    <button id="enter">ENTER</button>
+  </div>
 
-<div id="rank"></div>
-<ul id="found"></ul>
+
+  <span id="countdown">0:00</span>
+</div>
 
 </body>
 <script src="index.js" type="module"></script>
