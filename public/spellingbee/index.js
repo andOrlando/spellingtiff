@@ -151,9 +151,9 @@ function setWord(s) {
   [...s].forEach(addChar)
 }
 function addTempAttr(elem, name, timeout) {
-  elem.setAttribute(name, (elem.getAttribute(name) || 0) + 1)
+  elem.setAttribute(name, (parseInt(elem.getAttribute(name)) || 0) + 1)
   setTimeout(() => {
-    const count = elem.getAttribute(name) || 0
+    const count = parseInt(elem.getAttribute(name)) || 0
     if (count <= 1) elem.removeAttribute(name)
     else elem.setAttribute(name, count-1)
   }, timeout)

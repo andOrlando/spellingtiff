@@ -62,13 +62,13 @@
   width: min-content;
   padding: 8px;
   font-size: 4vmax;
-  border-bottom: 2px var(--accent) solid;
+  border-bottom: 4px var(--accent) solid;
   margin-bottom: 30px;
   margin-top: 30px;
-  transition: border-color: 0.1s;
+  transition: border-color 0.2s;
 }
 #word[bad] {
-  animation: shake-horizontal 0.2s 1;
+  animation: shake-horizontal 0.6s infinite;
   border-color: var(--red);
 }
 #word[good] {
@@ -156,6 +156,7 @@
   transition: transform .1s;
 }
 #found {
+  pointer-events: none;
   position: absolute;
   background: white;
   z-index: 1;
@@ -205,9 +206,11 @@
 
 @keyframes shake-horizontal {
  0% { transform: translateX(0) }
- 25% { transform: translateX(5px) }
- 50% { transform: translateX(-5px) }
- 75% { transform: translateX(5px) }
+ 16% { transform: translateX(5px) }
+ 33% { transform: translateX(-5px) }
+ 50% { transform: translateX(5px) }
+ 66% { transform: translateX(-5px) }
+ 81% { transform: translateX(5px) }
  100% { transform: translateX(0) }
 }
 
