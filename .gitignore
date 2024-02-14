@@ -1,6 +1,7 @@
 node_modules
 cookies.json
 .env
+app.zip
 
 crossword.json
 spellingbee.json
