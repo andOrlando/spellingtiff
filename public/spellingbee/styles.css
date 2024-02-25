@@ -23,6 +23,14 @@
 }
 .sbb#center { background: var(--accent-alt)}
 
+button {
+  border-style: outset;
+  border-color: aliceblue;
+  border-image: initial;
+  color: black;
+  touch-action: manipulation;
+}
+
 #delete,
 #shuffle,
 #enter {
@@ -34,6 +42,9 @@
 }
 #shuffle {
   width: calc(var(--button-size) * 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #shuffle svg {
   vertical-align: middle;
