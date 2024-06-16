@@ -64,11 +64,11 @@ export async function getCrossword() {
 
 async function writeCrossword() {
 
-  let SIDNY_cookie;
-  store.findCookie("nytimes.com", "/", "SIDNY", (_, c) => SIDNY_cookie = c)
-
+  let SIDNY_cookie = await new Promise(res => {
+    store.findCookie("nytimes.com", "/", "SIDNY", (_, c) => res(c))
+  })
   // if we no longer have auth, get it again (thanks mom lol)
-  if (SIDNY_cookie == null) getAuthCookies()
+  if (SIDNY_cookie == null) await getAuthCookies()
   console.log("getting auth with cookie " + SIDNY_cookie)
 
   const date = new Date()

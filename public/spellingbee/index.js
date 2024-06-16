@@ -29,7 +29,7 @@ const found = []
 
 const total = data.answers.reduce((sum, a) => sum += scoreWord(a), 0)
 const breakpoints = PERCENTAGES.map(a => Math.round(a * 0.01 * total))
-let rank = 0
+let rank = 1
 
 //set values with cookies
 async function cookie2Found() {
@@ -59,7 +59,7 @@ function setLetters(buttons) {
 const setProgress=(elem, percent)=>elem.setAttribute("style", `--done: ${percent}; --color: ${COLORS[rank]}`)
 setProgress(totalprogress_elem, 0)
 setProgress(stageprogress_elem, 0)
-function updateRank() { rank_elem.innerText = TITLES[rank] }
+function updateRank() { rank_elem.innerText = TITLES[rank-1] }
 function updateScore() { score_elem.innerText = score }
 function scoreboxToast(pts) {
   const elem = document.createElement("span")
