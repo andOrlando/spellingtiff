@@ -39,6 +39,7 @@ button {
   font-weight: bold;
   border-radius: calc(var(--button-size) / 2 * 0.75);
   border-width: calc(var(--button-size) / 24);
+  user-select: none;
 }
 #shuffle {
   width: calc(var(--button-size) * 0.75);

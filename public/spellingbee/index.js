@@ -191,10 +191,11 @@ document.getElementById("dropdown").addEventListener("click", () => {
 
 //universal keypress listener
 document.addEventListener("keydown", e => {
-  if (e.code == "Enter") submit()
-  if (e.code == "Backspace") removeLastChar()
   if (e.key == data.centerLetter) addChar(data.centerLetter)
   if (letters.includes(e.key)) addChar(e.key)
+  if (e.code == "Enter") submit()
+  if (e.code == "Backspace") removeLastChar()
+  if (e.code == "Space") shuffle()
 });
 
 let date = new Date(Date.parse(data.printDate))
